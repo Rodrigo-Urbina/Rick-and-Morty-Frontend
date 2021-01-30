@@ -1,0 +1,31 @@
+<app-header title="Characters"></app-header>
+
+<ion-content>
+<ion-list>
+  <app-char-list *ngFor="let element of characters" 
+            [element]="element"
+            routerLink="/character-detail/{{element.id}}"></app-char-list>
+</ion-list>
+
+  
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+    color="dark"
+      loadingSpinner="crescend"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-button class="no-margin" expand="full">Favorites</ion-button>
+    </ion-col>
+    <ion-col class="ion-no-padding">
+      <ion-button class="no-margin" expand="full">Profile</ion-button>
+    </ion-col>
+  </ion-row>
+  
+</ion-footer>
