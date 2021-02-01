@@ -3,13 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'character-detail/:id',
@@ -24,9 +24,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/characters/favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'forgot',
+    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
+  },
     path: 'episode',
     loadChildren: () => import('./pages/episode/episode.module').then( m => m.EpisodePageModule)
-  },
+  }
 ];
 
 @NgModule({
