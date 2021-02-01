@@ -31,7 +31,11 @@ export class LoginPage implements OnInit {
     this.authService.login(body.email, body.password)
       .subscribe((res) => {
         console.log("No hubo error");
-        this.router.navigate(['characters']);
+        if(res.error){
+          console.log(res.error);
+        } else {
+          this.router.navigate(['characters']);
+        }
       }, (err) => {
         console.log("Hubo un error", err);
       });
