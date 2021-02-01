@@ -11,6 +11,8 @@ import { CHARACTER } from '../../../constants/interfaces/CHARACTER';
 export class CharacterDetailPage implements OnInit {
   id : number ;
   character: CHARACTER;
+  characterDataLoaded!: Promise <boolean>;
+
   constructor(private charactersService : CharactersService,
               private actRoute : ActivatedRoute) { 
 
@@ -29,6 +31,7 @@ export class CharacterDetailPage implements OnInit {
       .subscribe(character =>{
         this.character = character;
         console.log(character);
+        this.characterDataLoaded = Promise.resolve(true);
       })
   }
 
