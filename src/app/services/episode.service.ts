@@ -1,17 +1,13 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from '../../environments/environment';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PAGE } from '../constants/interfaces/page';
-import { CHARACTER } from '../constants/interfaces/character';
+import { environment } from 'src/environments/environment';
+import { EPISODE } from '../constants/interfaces/EPISODE';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharactersService {
-  url = environment.API;
-  pageNumber = 0;
+export class EpisodeService {
   
   constructor(private http: HttpClient) { }
   
@@ -23,15 +19,8 @@ export class CharactersService {
         "Bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTJlYTlmYWUxOWU2MzAyODRlZGU3YiIsImVtYWlsIjoiaXNlbGFAYWRtaW4uY29tIiwiZmlyc3ROYW1lIjoiSXNlbGEiLCJsYXN0TmFtZSI6IkFsdmFyZXoiLCJjZWxscGhvbmUiOiI4MTEzODY3MDg2IiwiZmF2b3JpdGVzIjpbXSwiaWF0IjoxNjEyMjEwMTQ4LCJleHAiOjE2MTIyMjQ1NDh9.TGagQlsZ4cjlFSklJNr8hQhLRYSMLsRGwC3pvt13vjk',
     }),
   }
-  
-  getCharacters(): Observable<PAGE>{
-    this.pageNumber++;
-    return this.http.get<PAGE>(`${this.url}/characters?pageSize=20&page=${this.pageNumber}`, this.httpOptions);
-  }
 
-  getCharacter(id: number):Observable<CHARACTER>{
-    return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions);
+  getEpisode(url: String):Observable<EPISODE>{
+    return this.http.get<EPISODE>(`${url}`, this.httpOptions);
   }
-
 }
-

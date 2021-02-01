@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'favorites',
     loadChildren: () => import('./pages/characters/favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
+  {
+    path: 'episode',
+    loadChildren: () => import('./pages/episode/episode.module').then( m => m.EpisodePageModule)
+  },
 ];
 
 @NgModule({
