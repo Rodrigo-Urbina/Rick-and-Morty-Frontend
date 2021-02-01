@@ -23,17 +23,17 @@ export class CharactersPage implements OnInit {
     this.characterService.getCharacters()
       .subscribe( page=>{
         this.page = page;
-
-        if(this.page.info.next==='http://localhost:3000/characters?page=12'){
-          event.target.disabled = true;
-          return;
-        }
-
+        
         if(this.characters === undefined){
           this.characters = page.results;
         }
         else{
          this.characters.push(...page.results) 
+        }
+
+        if(this.page.info.next==='http://localhost:3000/characters?page=11'){
+          event.target.disabled = true;
+          return;
         }
 
         if(event){

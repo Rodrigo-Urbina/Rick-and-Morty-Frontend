@@ -1,6 +1,10 @@
-<app-header title="Character detail"></app-header>
-
-
-<ion-content>
-
-</ion-content>
+<div *ngIf="characterDataLoaded | async">
+    <app-header title="{{character.name}}"></app-header>
+    
+    
+    <ion-content>
+        
+    </ion-content>
+    
+</div>
+    
