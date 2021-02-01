@@ -20,7 +20,7 @@ export class CharactersService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'cache-control': 'no-cache',
       Authorization:
-        "Bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTJlYTlmYWUxOWU2MzAyODRlZGU3YiIsImVtYWlsIjoiaXNlbGFAYWRtaW4uY29tIiwiZmlyc3ROYW1lIjoiSXNlbGEiLCJsYXN0TmFtZSI6IkFsdmFyZXoiLCJjZWxscGhvbmUiOiI4MTEzODY3MDg2IiwiZmF2b3JpdGVzIjpbXSwiaWF0IjoxNjEyMTk0OTQzLCJleHAiOjE2MTIxOTg1NDN9.z649wQ5GNr5W8--4vBEzbWp48gnDU1wvcawEZCh-W24',
+        "Bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTIzMjlkMzE2ODllNWYwNDBjNmYyNSIsImVtYWlsIjoicm9kcmlnb0BhZG1pbi5jb20iLCJmaXJzdE5hbWUiOiJSb2RyaWdvIiwibGFzdE5hbWUiOiJVcmJpbmEiLCJjZWxscGhvbmUiOiI4MTEzODY3MDg2IiwiZmF2b3JpdGVzIjpbMSwzLDUsN10sImlhdCI6MTYxMjIwMjg0MywiZXhwIjoxNjEyMjA2NDQzfQ.9HeifMhM2LguiRMx2dpJyugb7AkOC0y-obNJ-vJ6s5A',
     }),
   }
   
