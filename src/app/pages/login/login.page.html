@@ -1,9 +1,60 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="password" type="text"></ion-input>
+    </ion-item>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" type="submit" expand="block" shape="round" [disabled]="loginForm.invalid">
+          Login
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <a [routerLink]="['/forgot']" class="small-text ion-text-center">Forgot Password?</a>
+      </ion-col>
+      <ion-col>
+        <a [routerLink]="['/register']" class="small-text ion-text-center">Register</a>
+      </ion-col>
+    </ion-row>
+  </form>
+  <!-- <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
   
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+  
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" shape="round">Sign In</ion-button>
+        <div>
+          <a [routerLink]="['/forgot']" class="small-text ion-text-center">Forgot Password?</a>
+        </div>
+        <div>
+          <a [routerLink]="['/register']" class="small-text ion-text-center">Register</a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </form> -->
 </ion-content>
