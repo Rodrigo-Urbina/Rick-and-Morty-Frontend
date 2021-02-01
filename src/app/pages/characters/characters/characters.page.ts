@@ -31,7 +31,7 @@ export class CharactersPage implements OnInit {
          this.characters.push(...page.results) 
         }
 
-        if(this.page.info.next==='http://localhost:3000/characters?page=11'){
+        if(this.page.info.next===null){
           event.target.disabled = true;
           return;
         }

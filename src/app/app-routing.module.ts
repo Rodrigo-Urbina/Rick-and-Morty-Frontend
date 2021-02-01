@@ -39,8 +39,9 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
   },
-
-
+    path: 'episode',
+    loadChildren: () => import('./pages/episode/episode.module').then( m => m.EpisodePageModule)
+  }
 ];
 
 @NgModule({

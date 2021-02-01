@@ -1,10 +1,50 @@
 <div *ngIf="characterDataLoaded | async">
-    <app-header title="{{character.name}}"></app-header>
+    <app-header title="{{character.name}}">
+        <ion-icon slot="end" name="star-outline"></ion-icon>
+    </app-header>
     
     
+    <ion-grid>
+        <ion-icon class="icon" color="warning" name="star-outline"></ion-icon>
+        <ion-img [src]="character.image" class="character-image"></ion-img>
+
+        <div class="characterInfo">
+            <ion-icon name="ellipse" class="ellipse" [ngStyle]="{'color':status(character.status)}"></ion-icon>
+            {{character.status}}  -  {{character.origin.name}}
+
+            <p class="title">
+                <b >
+                    Last known location:
+                </b>
+            </p>
+            <p class="info">
+                {{character.location.name}}
+            </p>
+
+            <p class="title"><b>Episodes:</b></p>
+        </div>
+        <ion-row class="scroll">
+            <select [size]='3' class="custom-select text-center" >
+                <option class="option" *ngFor="let episode of episodes" value="{{episode.id}}">
+                    {{episode.name}}
+                </option>
+            </select>
+        </ion-row>
+
+    </ion-grid>
     <ion-content>
         
     </ion-content>
-    
+
 </div>
-    
+    <ion-footer>
+        <ion-row>
+            <ion-col class="ion-no-padding">
+                <ion-button class="no-margin" expand="full">Favorites</ion-button>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+                <ion-button class="no-margin" expand="full">Profile</ion-button>
+            </ion-col>
+        </ion-row>
+        
+    </ion-footer>
