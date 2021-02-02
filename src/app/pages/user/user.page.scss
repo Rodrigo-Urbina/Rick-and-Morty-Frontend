@@ -2,11 +2,6 @@
   padding: 1.25rem 0;
 }
 .profile-image {
-  border-radius: 50% !important;
-  //   height: 16rem;
-  background-color: red;
-  width: 60%;
-  padding: 5.5rem 0;
   margin: auto;
   text-align: center;
 }
@@ -15,4 +10,12 @@
 }
 .centered {
   text-align: center;
+}
+
+h1{
+  font-size: 7rem;
+  border-radius: 50% !important;
+  background-color: rgb(41, 69, 160);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
 }

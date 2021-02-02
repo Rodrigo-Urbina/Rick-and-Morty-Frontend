@@ -32,7 +32,6 @@ export class UserService {
 
   async getFavorites(){
     this.user = await this.userData();
-    this.putFavorites([1]);
     return this.http.get<[number]>(`${this.url}/users/favorites/${this.user.email}`, this.httpOptions);
   }
 
