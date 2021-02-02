@@ -9,10 +9,14 @@
    </h1> 
 
    <h2>Air date: {{episode.air_date}}</h2>
-   <app-char-list *ngFor="let element of characters" 
-            [element]="element"
-            routerLink="/character-detail/{{element.id}}"></app-char-list>
-   
+   <ion-list>
+  <h2><b>Characters:</b></h2>
+     <app-char-list *ngFor="let element of characters" 
+     [element]="element"
+     routerLink="/character-detail/{{element.id}}">
+    </app-char-list>
+  </ion-list>
+     
 
    
   </ion-content>
