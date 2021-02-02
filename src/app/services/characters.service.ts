@@ -33,5 +33,18 @@ export class CharactersService {
     return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions);
   }
 
+  getCharacterByURL(url: String):Observable<CHARACTER>{
+    return this.http.get<CHARACTER>(`${url}`, this.httpOptions);
+  }
+
+  public userData(){
+    const jwtHelper = new JwtHelperService();
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user){
+      return jwtHelper.decodeToken(user.token);
+    }
+    return '';
+  }
+
 }
 
