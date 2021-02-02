@@ -16,7 +16,7 @@ export class EpisodeService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'cache-control': 'no-cache',
       Authorization:
-        "Bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTJlYTlmYWUxOWU2MzAyODRlZGU3YiIsImVtYWlsIjoiaXNlbGFAYWRtaW4uY29tIiwiZmlyc3ROYW1lIjoiSXNlbGEiLCJsYXN0TmFtZSI6IkFsdmFyZXoiLCJjZWxscGhvbmUiOiI4MTEzODY3MDg2IiwiZmF2b3JpdGVzIjpbXSwiaWF0IjoxNjEyMjEwMTQ4LCJleHAiOjE2MTIyMjQ1NDh9.TGagQlsZ4cjlFSklJNr8hQhLRYSMLsRGwC3pvt13vjk',
+        "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
     }),
   }
 

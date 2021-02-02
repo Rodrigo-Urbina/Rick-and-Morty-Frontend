@@ -8,5 +8,44 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">FirstName <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="firstName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">LastName <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="lastName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cellphone <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="cellphone" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="password" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirm Password <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="confirmPassword" type="text"></ion-input>
+    </ion-item>
 
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" type="submit" expand="block" shape="round" [disabled]="registerForm.invalid">
+          Register
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
