@@ -37,9 +37,16 @@ export class AuthService {
         } else {
           user.activeSession = false;
         }
-
         return user;
       })
     );
+  }
+
+  register(body: any) {
+    return this.http.post<any>(`${apiUrl}/users/signup`, body);
+  }
+
+  update(email: string, body: any) {
+    return this.http.patch<any>(`${apiUrl}/users/password/${email}`, body)
   }
 }

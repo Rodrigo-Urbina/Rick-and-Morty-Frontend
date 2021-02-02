@@ -20,7 +20,7 @@ export class CharactersService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'cache-control': 'no-cache',
       Authorization:
-      "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
+        "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
     }),
   }
   

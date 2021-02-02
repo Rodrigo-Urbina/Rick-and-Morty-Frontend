@@ -41,6 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'episode/:id',
+
     loadChildren: () => import('./pages/episode/episode.module').then( m => m.EpisodePageModule)
   }
 ];
