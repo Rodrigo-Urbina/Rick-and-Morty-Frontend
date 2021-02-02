@@ -20,7 +20,7 @@ export class CharactersService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'cache-control': 'no-cache',
       Authorization:
-        "Bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTIzMjlkMzE2ODllNWYwNDBjNmYyNSIsImVtYWlsIjoicm9kcmlnb0BhZG1pbi5jb20iLCJmaXJzdE5hbWUiOiJSb2RyaWdvIiwibGFzdE5hbWUiOiJVcmJpbmEiLCJjZWxscGhvbmUiOiI4MTEzODY3MDg2IiwiZmF2b3JpdGVzIjpbMSwzLDUsN10sImlhdCI6MTYxMjIwMjg0MywiZXhwIjoxNjEyMjA2NDQzfQ.9HeifMhM2LguiRMx2dpJyugb7AkOC0y-obNJ-vJ6s5A',
+      "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
     }),
   }
   
@@ -31,6 +31,19 @@ export class CharactersService {
 
   getCharacter(id: number):Observable<CHARACTER>{
     return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions);
+  }
+
+  getCharacterByURL(url: String):Observable<CHARACTER>{
+    return this.http.get<CHARACTER>(`${url}`, this.httpOptions);
+  }
+
+  public userData(){
+    const jwtHelper = new JwtHelperService();
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user){
+      return jwtHelper.decodeToken(user.token);
+    }
+    return '';
   }
 
 }
