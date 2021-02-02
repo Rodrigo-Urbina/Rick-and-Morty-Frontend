@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <div class="ion-text-center">
+    <img src="../../../assets/icon/Rick_and_Morty_logo.png">
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-item>
       <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
@@ -18,14 +21,14 @@
       <ion-input required formControlName="password" type="text"></ion-input>
     </ion-item>
     
-    <ion-row>
+    <ion-row class="ion-row">
       <ion-col>
         <ion-button color="primary" type="submit" expand="block" shape="round" [disabled]="loginForm.invalid">
           Login
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="ion-text-center">
       <ion-col>
         <a [routerLink]="['/forgot']" class="small-text ion-text-center">Forgot Password?</a>
       </ion-col>

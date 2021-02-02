@@ -5,7 +5,8 @@
     
     
     <ion-grid>
-        <ion-icon class="icon" color="warning" name="star-outline"></ion-icon>
+        <ion-icon class="icon" color="warning" name="star-outline" *ngIf="!markedAsFavorite()"(click)="markAsFavorite()"></ion-icon>
+        <ion-icon class="icon" color="warning" name="star" *ngIf="markedAsFavorite()" (click)="markAsFavorite()"></ion-icon>
         <ion-img [src]="character.image" class="character-image"></ion-img>
 
         <div class="characterInfo">
@@ -24,7 +25,7 @@
             <p class="title"><b>Episodes:</b></p>
         </div>
         <ion-row class="scroll">
-            <select [size]='3' class="custom-select text-center" >
+            <select [size]='3' class="custom-select text-center" style="width: 90%;" >
                 <option class="option" *ngFor="let episode of episodes" value="{{episode.id}}" routerLink="/episode/{{episode.id}}">
                     {{episode.name}}
                 </option>

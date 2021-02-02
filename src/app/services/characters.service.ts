@@ -17,7 +17,7 @@ export class CharactersService {
   
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'cache-control': 'no-cache',
       Authorization:
         "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
@@ -32,19 +32,15 @@ export class CharactersService {
   getCharacter(id: number):Observable<CHARACTER>{
     return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions);
   }
-
+  
   getCharacterByURL(url: String):Observable<CHARACTER>{
     return this.http.get<CHARACTER>(`${url}`, this.httpOptions);
   }
-
-  public userData(){
-    const jwtHelper = new JwtHelperService();
-    let user = JSON.parse(localStorage.getItem('currentUser'));
-    if(user){
-      return jwtHelper.decodeToken(user.token);
-    }
-    return '';
+  
+  getCharactersArray(array):Observable<any>{
+    return this.http.get<CHARACTER | [CHARACTER]>(`http://localhost:3000/characters/${array}`, this.httpOptions);
   }
-
+  
 }
+
 

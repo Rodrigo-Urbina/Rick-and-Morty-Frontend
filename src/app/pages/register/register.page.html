@@ -3,11 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="icon">
+    <ion-icon name="person-circle" color="primary"></ion-icon>
+  </div>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <ion-item>
       <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text>
@@ -43,7 +46,7 @@
     <ion-row>
       <ion-col>
         <ion-button color="primary" type="submit" expand="block" shape="round" [disabled]="registerForm.invalid">
-          Register
+          Sign Up
         </ion-button>
       </ion-col>
     </ion-row>

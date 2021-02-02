@@ -2,7 +2,10 @@
 
 <ion-content>
     <ion-list>
-        
+        <app-char-list *ngFor="let element of characters" 
+        [element]="element"
+        routerLink="/character-detail/{{element.id}}">
+        </app-char-list>
     </ion-list>
 </ion-content>
 <ion-footer>

@@ -1,3 +1,14 @@
 ion-content{
     text-align: center;
 }
+.ion-scroll::after{
+    padding-bottom: 10px !important; 
+}
+h1{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+h4{
+    margin-top: 2rem;
+    margin-bottom: 0;
+}

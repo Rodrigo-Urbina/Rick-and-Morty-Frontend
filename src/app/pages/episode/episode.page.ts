@@ -67,4 +67,8 @@ export class EpisodePage implements OnInit {
       });
   }
 
+  loadData(event){
+    
+  }
+
 }

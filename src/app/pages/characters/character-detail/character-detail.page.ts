@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
 import { CHARACTER } from '../../../constants/interfaces/CHARACTER';
 import { EPISODE } from '../../../constants/interfaces/EPISODE';
 import { EpisodeService } from 'src/app/services/episode.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-character-detail',
@@ -14,6 +15,7 @@ export class CharacterDetailPage implements OnInit {
   id : number ;
   character: CHARACTER;
   characterDataLoaded!: Promise <boolean>;
+  favorites : [number] = [1];
   episodes : [EPISODE] = [
     {id: 0,
     name: '',
@@ -25,10 +27,11 @@ export class CharacterDetailPage implements OnInit {
 
   constructor(private charactersService : CharactersService,
               private actRoute : ActivatedRoute,
-              private episodesService: EpisodeService) { 
+              private episodesService: EpisodeService,
+              private userService: UserService,
+              private router: Router) { 
 
-                
-    this.actRoute.params.subscribe(data=>{
+      this.actRoute.params.subscribe(data=>{
       this.id = data.id;
     });
 
@@ -36,6 +39,7 @@ export class CharacterDetailPage implements OnInit {
 
   ngOnInit() {
     this.getCharacterData();
+    this.getFavorites();
   }
 
   getCharacterData(){
@@ -51,9 +55,24 @@ export class CharacterDetailPage implements OnInit {
               this.characterDataLoaded = Promise.resolve(true);
             });
           });
-          console.log(character);
-          console.log(this.episodes);
       })
+  }
+
+  async getFavorites(){
+    this.favorites.pop();
+    (await this.userService.getFavorites())
+      .subscribe(character =>{
+        this.favorites.push(...character);
+      });
+  }
+
+  markedAsFavorite(){
+    if(this.favorites.includes(Number(this.id))){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   status(status:string):string{
@@ -75,7 +94,30 @@ export class CharacterDetailPage implements OnInit {
     return color;
   }
 
-  
+  markAsFavorite(){
+    if(this.favorites.includes(Number(this.id))){
+      const index = this.favorites.indexOf(Number(this.id));
+      this.favorites.splice(index,1);
+
+      const body = {'favorites': this.favorites};
+      this.userService.putFavorites(body)
+        .subscribe(res=>{
+          console.log(res);
+      });
+    }
+    else{
+      this.favorites.push(Number(this.id));
+      const body = {'favorites': this.favorites};
+      this.userService.putFavorites(body)
+        .subscribe(res=>{
+          console.log(res);
+        });
+    }
+  }
+
+  gotofav(){
+    this.router.navigateByUrl('/favorites');
+  }
 
 
 }

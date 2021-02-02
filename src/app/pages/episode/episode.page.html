@@ -1,27 +1,28 @@
-<div *ngIf="characterDataLoaded | async">
-
   <app-header title="Season {{season}}, episode {{episodeNumber}}"></app-header>
   
-  
   <ion-content>
-   <h1>
-     {{episode.name}}
-   </h1> 
+    <div *ngIf="characterDataLoaded | async">
 
-   <h2>Air date: {{episode.air_date}}</h2>
-   <ion-list>
-  <h2><b>Characters:</b></h2>
-     <app-char-list *ngFor="let element of characters" 
-     [element]="element"
-     routerLink="/character-detail/{{element.id}}">
-    </app-char-list>
-  </ion-list>
-     
+    <h1>
+      {{episode.name}}
+    </h1> 
+ 
+    <p>
+      <b>Air date:</b> {{episode.air_date}}
+    </p>
+    <h4><b>Characters:</b></h4>
 
-   
-  </ion-content>
-  <ion-footer>
-    <ion-row>
+    <ion-list>
+      <app-char-list *ngFor="let element of characters" 
+        [element]="element"
+        routerLink="/character-detail/{{element.id}}">
+      </app-char-list>
+    </ion-list>
+  </div>
+  
+</ion-content>
+  <ion-footer translucent="false" class="ion-no-border">
+    <ion-row style="background-color: white;">
         <ion-col class="ion-no-padding">
             <ion-button class="no-margin" expand="full" routerLink="/favorites">Favorites</ion-button>
         </ion-col>
@@ -31,5 +32,4 @@
     </ion-row>
     
 </ion-footer>
-</div>
   
