@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-title>Welcome {{user.firstName}} {{user.lastName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-item class="profile-container">
+      <div class="profile-image">
+        <div class="profile-name">
+          <h1>{{user.firstName[0]}} {{user.lastName[0]}}</h1>
+        </div>
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon slot="start"></ion-icon>
+      <ion-label class="centered">Your Profile</ion-label>
+      <ion-icon slot="end"></ion-icon>
+    </ion-item>
+    
+    <ion-card-content class="centered">
+      {{user.firstName}} {{user.lastName}}
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row class="scroll">
+      <select [size]='3' class="custom-select text-center">
+        <!-- <option class="option" *ngFor="let favorites of favorites" value="{{favorite.id}}" routerLink="/character-detail/{{favorite.id}}">
+          {{favorite.name}}
+        </option> -->
+      </select>
+    </ion-row>
+  </ion-grid>
+  <ion-button (click)="logOut()" color="primary" expand="full" shape="round">
+    Log Out
+  </ion-button>
 </ion-content>
