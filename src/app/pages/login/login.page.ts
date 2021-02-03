@@ -47,8 +47,7 @@ export class LoginPage implements OnInit {
   async alert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Error',
-      subHeader: 'Invalid credentials',
+      header: 'Invalid credentials',
       message: 'Please verify your data and try again',
       buttons: ['OK']
     });

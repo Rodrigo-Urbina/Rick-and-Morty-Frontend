@@ -55,6 +55,6 @@ export class UserPage implements OnInit {
 
   logOut() {
     localStorage.removeItem("currentUser");
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }

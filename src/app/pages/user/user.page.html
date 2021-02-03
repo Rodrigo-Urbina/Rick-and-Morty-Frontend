@@ -1,10 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome {{user.firstName}} {{user.lastName}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Welcome {{user.firstName}} {{user.lastName}}"></app-header>
 
-<ion-content style="background-color: red">
+<ion-content>
   <ion-card>
     <ion-item class="profile-container">
       <div class="profile-image">
@@ -15,13 +11,14 @@
     </ion-item>
     
     <ion-item>
-      <ion-icon slot="start"></ion-icon>
       <ion-label class="centered">Your Profile</ion-label>
-      <ion-icon slot="end"></ion-icon>
+      
     </ion-item>
     
     <ion-card-content class="centered">
-      {{user.firstName}} {{user.lastName}}
+      <b>Name: </b>{{user.firstName}} {{user.lastName}}<br>
+      <b>Email:</b>{{user.email}}<br>
+      <b>Cellphone:</b> {{user.cellphone}}
     </ion-card-content>
   </ion-card>
   <ion-grid>

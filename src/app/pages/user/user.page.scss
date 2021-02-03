@@ -1,12 +1,17 @@
 .profile-container {
   padding: 1.25rem 0;
+  background-color: white;
 }
 .profile-image {
   margin: auto;
   text-align: center;
+  background-color: white;
+
 }
 .profile-name {
   margin: auto;
+  background-color: white;
+
 }
 .centered {
   text-align: center;
@@ -15,9 +20,13 @@
 h1 {
   font-size: 7rem;
   border-radius: 50% !important;
-  background-color: rgb(41, 69, 160);
+  background-color: #afd472;
   padding: 2rem;
   margin-bottom: 2.5rem;
+  color: #39a6a8;
+  border-style: outset;
+  border:5px solid rgb(221, 223, 221);
+  text-shadow: 2px 2px 5px #354d13;
 }
 .option {
   border-bottom: 0.5px solid rgb(218, 216, 216) !important;
@@ -31,4 +40,34 @@ h1 {
 }
 .custom-select {
   width: 100%;
+}
+
+ion-content{
+
+  --ion-background-color: #90bd47;
+}
+ion-grid{
+    background:  #90bd47;
+}
+ion-card,  ion-label, item-inner{
+    background:  white;
+  --ion-background-color: white;
+
+}
+ion-card{
+  margin:0.8rem;
+}
+select{
+  margin:0.5rem;
+  border: 1px solid #0b3835;
+  padding:0;
+}
+ion-button{
+  margin: 1rem 1rem;
+}
+ion-item{
+  border: none
+}
+.profile-container{
+  padding:0 !important;
 }
