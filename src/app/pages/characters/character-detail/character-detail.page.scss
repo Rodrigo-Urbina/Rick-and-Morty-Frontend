@@ -35,7 +35,7 @@
 }
 select{
     text-align: center;
-    border-color:rgb(0, 68, 255);
+    border-color:#0b3835;
     margin: auto;
     overflow-y: scroll;
     margin-top:10px;
@@ -43,3 +43,11 @@ select{
 .scroll{
    
 }
+
+ion-content{
+
+    --ion-background-color: #90bd47;
+  }
+  ion-grid{
+      background:  #90bd47;
+  }

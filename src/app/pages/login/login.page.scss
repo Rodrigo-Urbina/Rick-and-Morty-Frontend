@@ -22,3 +22,21 @@ img{
 a{
     font-size: 14px;
 }
+ion-content{
+
+    --ion-background-color: #90bd47;
+  }
+  ion-grid{
+      background:  #90bd47;
+  }
+  ion-toolbar{
+
+    --background:#18803c;
+}
+ion-title{
+    color:white;
+}
+.my-custom-class{
+    color:red;
+    text-size: 20px
+}

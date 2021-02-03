@@ -15,30 +15,32 @@ export class CharactersService {
   
   constructor(private http: HttpClient) { }
   
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'cache-control': 'no-cache',
-      Authorization:
-        "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
+  httpOptions () {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'cache-control': 'no-cache',
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token,
     }),
+    }
   }
   
   getCharacters(): Observable<PAGE>{
     this.pageNumber++;
-    return this.http.get<PAGE>(`${this.url}/characters?pageSize=20&page=${this.pageNumber}`, this.httpOptions);
+    return this.http.get<PAGE>(`${this.url}/characters?pageSize=20&page=${this.pageNumber}`, this.httpOptions());
   }
 
   getCharacter(id: number):Observable<CHARACTER>{
-    return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions);
+    return this.http.get<CHARACTER>(`${this.url}/characters/${id}`, this.httpOptions());
   }
   
   getCharacterByURL(url: String):Observable<CHARACTER>{
-    return this.http.get<CHARACTER>(`${url}`, this.httpOptions);
+    return this.http.get<CHARACTER>(`${url}`, this.httpOptions());
   }
   
   getCharactersArray(array):Observable<any>{
-    return this.http.get<CHARACTER | [CHARACTER]>(`http://localhost:3000/characters/${array}`, this.httpOptions);
+    return this.http.get<CHARACTER | [CHARACTER]>(`${this.url}/characters/${array}`, this.httpOptions());
   }
   
 }

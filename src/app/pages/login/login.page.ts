@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              public alertController: AlertController) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -33,12 +35,25 @@ export class LoginPage implements OnInit {
         console.log("No hubo error");
         if(res.error){
           console.log(res.error);
+          this.alert();
         } else {
           this.router.navigate(['characters']);
         }
       }, (err) => {
         console.log("Hubo un error", err);
       });
+  }
+
+  async alert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error',
+      subHeader: 'Invalid credentials',
+      message: 'Please verify your data and try again',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

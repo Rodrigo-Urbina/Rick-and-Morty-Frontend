@@ -10,7 +10,7 @@ ion-icon{
     padding:1rem;
 }
 .icon-background{
-    background-color: rgb(59, 57, 196);
+    background-color:#0b3835;
     border-radius: 50% !important;
 }
 ion-item{
@@ -21,4 +21,16 @@ ion-button{
 }
 .button{
     padding: 0;
+}
+ion-toolbar{
+
+    --background:#18803c;
+}
+ion-title{
+    color:white;
+}
+ion-content{
+    text-align: center;
+    --ion-background-color: #90bd47;
+
 }
