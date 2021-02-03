@@ -27,9 +27,9 @@
   <ion-grid>
     <ion-row class="scroll">
       <select [size]='3' class="custom-select text-center">
-        <!-- <option class="option" *ngFor="let favorites of favorites" value="{{favorite.id}}" routerLink="/character-detail/{{favorite.id}}">
-          {{favorite.name}}
-        </option> -->
+        <option class="option" *ngFor="let character of characters" value="{{character.id}}" routerLink="/character-detail/{{character.id}}">
+          {{character.name}}
+        </option>
       </select>
     </ion-row>
   </ion-grid>

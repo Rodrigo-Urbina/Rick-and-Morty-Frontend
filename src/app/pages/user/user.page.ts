@@ -4,6 +4,7 @@ import { CHARACTER } from 'src/app/constants/interfaces/character';
 import { AuthService } from 'src/app/services/auth.service';
 import { CharactersService } from 'src/app/services/characters.service';
 import { TokenGuardService } from 'src/app/services/token-guard.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ import { TokenGuardService } from 'src/app/services/token-guard.service';
 export class UserPage implements OnInit {
   
   id: number;
-  character: CHARACTER;
+  characters: [CHARACTER];
   favorites = [];
   user: any;
 
@@ -21,10 +22,12 @@ export class UserPage implements OnInit {
   constructor(private charactersService: CharactersService,
               private router: Router,
               private authService: AuthService, 
-              private tokenGuardService: TokenGuardService) {  }
+              private tokenGuardService: TokenGuardService, 
+              private userService: UserService) {  }
 
   ngOnInit() {
     this.getProfileData();
+    this.getFavorites();
   }
 
   getProfileData() {
@@ -36,7 +39,22 @@ export class UserPage implements OnInit {
     }
   }
 
+  async getFavorites() {
+    (await this.userService.getFavorites()).subscribe((data) => {
+      this.favorites = data;
+      this.getCharacters(this.favorites);
+    })
+  }
+
+  getCharacters(fav){
+    this.charactersService.getCharactersArray(fav).subscribe((data) => {
+      console.log(data);
+      this.characters = data;
+    })
+  }
+
   logOut() {
     localStorage.removeItem("currentUser");
+    this.router.navigate(['']);
   }
 }
